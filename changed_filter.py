@@ -117,7 +117,7 @@ class ChangedFilterCommand(sublime_plugin.WindowCommand):
             return len(self.all_files) > 0
 
         except subprocess.CalledProcessError as e:
-            self._show_error(f"Error running git: {e}")
+            self._show_error("Error running git: {}".format(e))
             return False
         except FileNotFoundError:
             self._show_error("Git not found in PATH")
@@ -131,9 +131,9 @@ class ChangedFilterCommand(sublime_plugin.WindowCommand):
         unstaged_count = len(self.unstaged_files)
 
         items = [
-            [f"All Changes ({all_count} files)", "Show all staged and unstaged files"],
-            [f"Staged Only ({staged_count} files)", "Show only files in the staging area"],
-            [f"Unstaged Only ({unstaged_count} files)", "Show only unstaged changes and untracked files"]
+            ["All Changes ({} files)".format(all_count), "Show all staged and unstaged files"],
+            ["Staged Only ({} files)".format(staged_count), "Show only files in the staging area"],
+            ["Unstaged Only ({} files)".format(unstaged_count), "Show only unstaged changes and untracked files"]
         ]
 
         self.window.show_quick_panel(
@@ -171,13 +171,13 @@ class ChangedFilterCommand(sublime_plugin.WindowCommand):
             filter_name = "Unstaged Only"
 
         if not files:
-            self._show_error(f"No {filter_name.lower()}")
+            self._show_error("No {}".format(filter_name.lower()))
             return
 
         self.window.show_quick_panel(
             files,
             self._on_file_selected,
-            placeholder=f"Changed Filter | {filter_name} |",
+            placeholder="Changed Filter | {} |".format(filter_name),
             on_highlight=None
         )
 
