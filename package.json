@@ -1,0 +1,9 @@
+{
+  "name": "Changed Filter",
+  "description": "Quick panel filter for git changed files with staging status",
+  "author": "brady-zip",
+  "homepage": "https://github.com/brady-zip/sublime-changed-filter",
+  "version": "1.0.0",
+  "license": "MIT",
+  "sublime_text": ">=3000"
+}

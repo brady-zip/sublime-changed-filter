@@ -1,0 +1,6 @@
+[
+    {
+        "keys": ["super+shift+g"],
+        "command": "changed_filter"
+    }
+]
